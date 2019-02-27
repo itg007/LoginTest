@@ -1,5 +1,6 @@
 package sdu.cs.sirichai.logintest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
     //Explicit
     String nameString, userString, passString;
 
@@ -38,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 //check username$password
                 if ((userString.equals("admin")) && (passString.equals("1234"))) {
                     Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+
+                    //ส่งข้อมูลไปหน้า Menu
+                    Intent menuIntent = new Intent(MainActivity.this, MenuActivity.class);
+                    menuIntent.putExtra("Name", nameString);
+                    startActivity(menuIntent);
                 } else {
                     Toast.makeText(getApplicationContext(),"กรอกข้อมูลไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
                 }

@@ -35,18 +35,21 @@ public class MainActivity extends AppCompatActivity {
                 //cleck ค่าว่าง
                 if ((nameString.length()==0)||(userString.length()==0)||(passString.length()==0)) {
                     Toast.makeText(getApplicationContext(),"กรุณากรอกข้อมูลในครบทุกช่อง",Toast.LENGTH_SHORT).show();
-                }
+                } else {//ถ้าข้อมูลไม่ว่าง
 
-                //check username$password
-                if ((userString.equals("admin")) && (passString.equals("1234"))) {
-                    Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                    //check username$password
+                    if ((userString.equals("admin")) && (passString.equals("1234"))) {
+                        Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
 
-                    //ส่งข้อมูลไปหน้า Menu
-                    Intent menuIntent = new Intent(MainActivity.this, MenuActivity.class);
-                    menuIntent.putExtra("Name", nameString);
-                    startActivity(menuIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(),"กรอกข้อมูลไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
+                        //ส่งข้อมูลไปหน้า Menu
+                        Intent menuIntent = new Intent(MainActivity.this, MenuActivity.class);
+                        //ส่งข้อมูล
+                        menuIntent.putExtra("Name", nameString);
+                        //เริ่มส่งข้อมูล
+                        startActivity(menuIntent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "กรอกข้อมูลไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });//end setOnClickListener
